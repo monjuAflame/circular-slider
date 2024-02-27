@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider - Plugin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script src="./circular-slider.min.js"></script>
+
+
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .circular-slider {
+            background: radial-gradient(#fdb76d, #f08a00);
+            height: 40em;
+            min-height: 100vh;
+            padding: 1em 2em 0 2em;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .description {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .text:not(:nth-child(3)) {
+            display: none;
+        }
+
+        .text h1 {
+            font-size: 3em;
+            margin: 0.5em 0;
+        }
+
+        .text p {
+            max-width: 550px;
+            line-height: 30px;
+            margin: 0 auto;
+        }
+
+        .slider {
+            position: absolute;
+            bottom: -90%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+        }
+
+        .slider .img {
+            width: 70vw;
+            height: 70vw;
+            max-width: 400px;
+            max-height: 400px;
+            background-image: url(./img-1.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transform: 300ms;
+        }
+
+        .indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1600px;
+            height: 1600px;
+            max-width: 1600px;
+            max-height: 1600px;
+            border: 2px #fff solid;
+            border-radius: 50%;
+            transition: transform 300ms;
+            /* background-color: red; */
+        }
+
+        .indicator::before {
+            content: "";
+            position: absolute;
+            top: -0.5em;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1em;
+            height: 1em;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        .menu div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1700px;
+            height: 1700px;
+            max-width: 1700px;
+            max-height: 1700px;
+            border-radius: 50%;
+        }
+
+        .menu span {
+            position: absolute;
+            top: -1em;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            transition: 200ms;
+            text-align: center;
+            background-color: #333;
+            padding: 5px;
+            border-radius: 50%;
+        }
+
+        .menu span img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .menu span:hover {
+            color: #ccc;
+        }
+
+        .menu div:nth-child(1) {
+            transform: translate(-50%, -50%) rotate(-58deg);
+        }
+
+        .menu div:nth-child(2) {
+            transform: translate(-50%, -50%) rotate(-32deg);
+        }
+
+        .menu div:nth-child(3) {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        .menu div:nth-child(4) {
+            transform: translate(-50%, -50%) rotate(32deg);
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <section class="circular-slider">
+        <div class="container">
+
+            <div class="slider">
+                <div class="indicator"></div>
+                <div class="description">
+                    <div class="text">
+                        <h1>Berry Blass</h1>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio expedita repellat enim
+                            repellendus
+                            voluptatibus veniam vitae nulla ea dolor beatae minima culpa reprehenderit provident
+                            voluptates
+                            sequi rerum
+                            quia, modi nobis?</p>
+                    </div>
+                    <div class="text">
+                        <h1>Berry Blass 2</h1>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio expedita repellat enim
+                            repellendus
+                            voluptatibus veniam vitae nulla ea dolor beatae minima culpa reprehenderit provident
+                            voluptates
+                            sequi rerum
+                            quia, modi nobis?</p>
+                    </div>
+                    <div class="text">
+                        <h1>Berry Blass 3</h1>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio expedita repellat enim
+                            repellendus
+                            voluptatibus veniam vitae nulla ea dolor beatae minima culpa reprehenderit provident
+                            voluptates
+                            sequi rerum
+                            quia, modi nobis?</p>
+                    </div>
+                    <div class="text">
+                        <h1>Berry Blass 4</h1>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio expedita repellat enim
+                            repellendus
+                            voluptatibus veniam vitae nulla ea dolor beatae minima culpa reprehenderit provident
+                            voluptates
+                            sequi rerum
+                            quia, modi nobis?</p>
+                    </div>
+                </div>
+                <div class="menu">
+                    <div>
+                        <span>
+                            <img src="./circular-slider-master/img/css.png" alt="">
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            <img src="./circular-slider-master/img/html.png" alt="">
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            <img src="./circular-slider-master/img/js.svg" alt="">
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            <img src="./circular-slider-master/img/sass.png" alt="">
+                        </span>
+                    </div>
+                </div>
+                <div class="img"></div>
+            </div>
+        </div>
+    </section>
+    <script>
+        const slider = document.querySelector('.circular-slider');
+        const indicator = document.querySelector('.indicator');
+        const menuItems = document.querySelectorAll('.menu span');
+        const description = document.querySelectorAll('.description .text');
+
+        const rotationValues = [-58, -32, 0, 32, 58];
+        const colors = [
+            'red', 'blue', 'green', 'indigo', 'black'
+        ];
+
+        let itemIndex = 2;
+
+        function rotate(rotationValue) {
+            indicator.style.transform = `translate(-50%, -50%) rotate(${rotationValue}deg)`
+        }
+
+        menuItems.forEach((menu, i) => {
+            menu.addEventListener("click", () => {
+                slider.style.background = colors[i];
+
+                if (i > itemIndex) {
+                    rotate(rotationValues[itemIndex] - 10);
+                } else if (i < itemIndex) {
+                    rotate(rotationValues[itemIndex] + 10)
+                } else {
+                    return "";
+                }
+                setTimeout(() => {
+                    rotate(rotationValues[i])
+                }, 300);
+
+                description.forEach(text => {
+                    text.style.display = "none"
+                })
+                description[i].style.display = "block"
+                itemIndex = i
+            })
+        })
+
+    </script>
+</body>
+
+</html>
