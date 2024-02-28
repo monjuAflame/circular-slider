@@ -61,11 +61,20 @@
 
     this.currentAngle = 0;
 
+    let screensize = this.wrapper.parentNode.getBoundingClientRect().width;
+    let initialValue = 0;
+    if (screensize > 1800) {
+      initialValue = 14;
+    } else if (screensize > 1500) {
+      initialValue = 8;
+    }
+
     this.stepAngle =
       (2 * Math.PI) /
-      newSlider.querySelectorAll(
+      (newSlider.querySelectorAll(
         ".circular-slider .wrapper .slides-holder .slides-holder__item"
-      ).length;
+      ).length +
+        initialValue);
 
     this.currentSlide = 0;
 
@@ -111,7 +120,24 @@
     // this.wrapper.style.height = radius + "px";
     this.wrapper.style.height = "100%";
 
-    let r = 4 * radius * (1 - this.startSetup.slideSize);
+    let screensize = this.wrapper.parentNode.getBoundingClientRect().width;
+    let initialValue = 4;
+    if (screensize > 1800) {
+      initialValue = 7;
+    } else if (screensize > 1500) {
+      initialValue = 6;
+    } else if (screensize > 1200) {
+      initialValue = 4.5;
+    } else if (screensize > 900) {
+      initialValue = 4;
+    } else if (screensize > 768) {
+      initialValue = 3.5;
+    } else if (screensize > 350) {
+      initialValue = 3.5;
+    } else {
+      initialValue = 6;
+    }
+    let r = initialValue * radius * (1 - this.startSetup.slideSize);
     this.slidesHolder.style.width = this.slidesHolder.style.height = r + "px";
     this.slidesRepositioning(r / 2);
 
@@ -129,8 +155,13 @@
     this.descriptionsHolder.style.fontSize =
       window.innerHeight < window.innerWidth ? "1.2vh" : "1.2vw";
     for (let i = 0; i < this.slides.length; i++) {
-      this.slides[i].style.width = this.slides[i].style.height =
-        this.slidesSize + "px";
+      if (screensize > 768) {
+        this.slides[i].style.width = this.slides[i].style.height = "80px";
+      } else if (screensize > 350) {
+        this.slides[i].style.width = this.slides[i].style.height = "60px";
+      }
+      // this.slides[i].style.width = this.slides[i].style.height =
+      //   this.slidesSize + "px";
     }
   };
 
@@ -228,7 +259,13 @@
     this.slides[x].classList.remove("slides-holder__item_active");
     // this.slides[x].style.height = this.slides[x].style.width =
     //   this.slidesSize + "px";
-    this.slides[x].style.height = this.slides[x].style.width = "96px";
+    let screensize = this.wrapper.parentNode.getBoundingClientRect().width;
+
+    if (screensize > 768) {
+      this.slides[x].style.height = this.slides[x].style.width = "80px";
+    } else {
+      this.slides[x].style.height = this.slides[x].style.width = "60px";
+    }
   };
 
   Slider.prototype.addStyle = function () {
@@ -238,7 +275,14 @@
     this.slides[x].classList.add("slides-holder__item_active");
     // this.slides[x].style.height = this.slides[x].style.width =
     //   this.slidesSize + 20 + "96px";
-    this.slides[x].style.height = this.slides[x].style.width = "96px";
+    let screensize = this.wrapper.parentNode.getBoundingClientRect().width;
+
+    if (screensize > 768) {
+      this.slides[x].style.height = this.slides[x].style.width = "144px";
+    } else {
+      this.slides[x].style.height = this.slides[x].style.width = "90px";
+    }
+    // this.slides[x].style.height = this.slides[x].style.width = "96px";
     this.slides[x].style.borderColor = this.slides[x].getAttribute("color");
 
     this.afterSliderContent.style.transition = "0.7s all";
